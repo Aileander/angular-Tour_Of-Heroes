@@ -8,7 +8,29 @@ next time you come here items will display!
   <a routerLink="/shipping">Shipping Costs</a>
 </p>
 
+<!--Collection to display each item added to the cart with its respective price-->
 <div class="cart-item" *ngFor="let item of items">
   <span>{{item.name}}</span>
   <span>{{item.price | currency}}</span>
 </div>
+
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+<!--Controls for customer details (Name | Address)-->
+<div>
+  <label for="customerName">
+    Your Name |
+  </label>
+  <input id="customerName" type="text" formControlName="customerName">
+</div>
+
+<div>
+  <label for="customerAddress">
+    Shipping Address
+  </label>
+  <input id="customerAddress" type="text" fromControlName="customerAddress">
+</div>
+
+  <!--Button to submit customer information onClick-->
+  <button class="button" type="submit">Buy it Now</button>
+</form>
